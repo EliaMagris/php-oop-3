@@ -17,7 +17,7 @@ $generi = [
 
 
 $prodotti = [
-  new Libro('La scelta di Natan', 'Antonio Puccio', 23.40, $generi['giallo'], true, 'https://immagine-copertina.com', 250, 'flessibile'),
+  new Libro('La scelta di Natan', 'Antonio Puccio', 23.40, $generi['horror'], true, 'https://immagine-copertina.com', 250, 'flessibile'),
   new audioLibro('La scelta di Natan', 'Antonio Puccio', 23.40, $generi['giallo'], true, 'https://immagine-copertina.com', 120, 'spotify', 'https://spotify-libri.com'),
   new Cd('Singin In The Rain', 'Gene Kelly', 13.70, $generi['drama'], true, 'https://immagine-copertina.com', 80, '1985'),
   new Dvd('007', 'James Bond', 39.90, $generi['azione'], true, 'https://immagine-copertina.com', 100, 'https://spotify-libri.com'),
@@ -48,16 +48,51 @@ $prodotti = [
 <?php 
 foreach ($prodotti as $elem) {
     echo '<strong>';
+    echo 'Tipo: ';
     echo get_class($elem);
     echo '</strong>';
     echo '<br>';
+    echo 'Titolo: ';
     echo $elem->nome;
     echo '<br>';
+    echo 'Autore: ';
     echo $elem->autore;
     echo '<br>';
+    echo 'Prezzo: ';
     echo $elem->prezzo;
+    echo ' €';
     echo '<br>';
-    echo '<br>';
+    if (get_class($elem) == 'libro') {
+        echo 'Copertina: ';
+        echo $elem->copertina;
+        echo '<br>';
+        echo 'Numero pagine: ';
+        echo $elem->pagine;
+        echo '<br>';
+        };
+        if (get_class($elem) == 'audioLibro') {
+            echo 'Durata: ';
+            echo $elem->durata;
+            echo '<br>';
+            echo 'Piattaforma: ';
+            echo $elem->piattaforma;
+            echo '<br>';
+            };
+            if (get_class($elem) == 'Cd') {
+                echo 'Durata: ';
+                echo $elem->durata;
+                echo '<br>';
+                echo 'Anno: ';
+                echo $elem->anno;
+                echo '<br>';
+                };
+                if (get_class($elem) == 'Dvd') {
+                    echo 'Durata: ';
+                    echo $elem->time;
+                    echo ' min.';
+                    echo '<br>';
+                    };
+                    echo '<br>';
 }
 ?>
 <!-- AXIOS -->
